@@ -2,25 +2,26 @@
 
 import streamlit as st
 import google.generativeai as genai
-from pypdf import PdfReader # Make sure to import PdfReader
 import os
+
+from pypdf import PdfReader
 
 def get_text_from_pdf(pdf_file):
     """
     Extracts text from an uploaded PDF file using pypdf.
     """
+    text = ""
     try:
-        text = ""
         # The PdfReader needs the file-like object directly
         pdf_reader = PdfReader(pdf_file)
         for page in pdf_reader.pages:
             page_text = page.extract_text()
             if page_text:
                 text += page_text
-        return text
     except Exception as e:
         st.error(f"Error reading PDF file: {e}")
         return None
+    return text
 
 def get_gemini_response(input_prompt):
     """
