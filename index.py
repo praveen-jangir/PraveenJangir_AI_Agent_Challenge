@@ -7,9 +7,8 @@ PORT = int(os.getenv("PORT", 8000))
 
 # Command to run the Streamlit app
 # We use 'app.py' as the source file for streamlit
-command = "streamlit run app.py --server.port " + str(PORT) + " --server.headless true"
+command = f"streamlit run app.py --server.port $PORT --server.headless true"
 
-# Start the Streamlit app as a subprocess
 process = subprocess.Popen(command, shell=True)
 
 # Start a simple HTTP server to satisfy Vercel's health checks
