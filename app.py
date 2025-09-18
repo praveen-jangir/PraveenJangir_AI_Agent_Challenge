@@ -3,7 +3,7 @@
 import streamlit as st
 import google.generativeai as genai
 import os
-
+#1234567
 from pypdf import PdfReader
 
 def get_text_from_pdf(pdf_file):
